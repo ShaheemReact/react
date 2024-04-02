@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { CoreConcept } from "./components/CoreConcept";
 import TabButton from "./components/TabButton";
 import {CORE_CONCEPTS, EXAMPLES   } from "./components/data"
+import Tabs from './components/Tabs';
+
+
 function App() {
   const [selectedTopic,setSelectedTopic ] = useState();
   function handleClick(selectedButton){
@@ -45,13 +48,11 @@ console.log("APP CONTENT")
         <h2>Time to get started!</h2>
       <section id="examples">
       <h2>Examples</h2>
-        <menu>
-        <TabButton isSelected={selectedTopic==='components'} onSelect={()=>handleClick('components')}>Components</TabButton>
+      <Tabs buttonContainer buttons={<><TabButton isSelected={selectedTopic==='components'} onSelect={()=>handleClick('components')}>Components</TabButton>
         <TabButton isSelected={selectedTopic==='jsx'} onSelect={()=>handleClick('jsx')}>JSX</TabButton>
         <TabButton isSelected={selectedTopic==='props'} onSelect={()=>handleClick('props')}>Props  </TabButton>
-        <TabButton isSelected={selectedTopic==='state'} onSelect={()=>handleClick('state')}>STATE</TabButton>
-        </menu>
-        {TabContent}       
+        <TabButton isSelected={selectedTopic==='state'} onSelect={()=>handleClick('state')}>STATE</TabButton> </>}>{TabContent}</Tabs>
+
          </section>
       </main>
     </div>
