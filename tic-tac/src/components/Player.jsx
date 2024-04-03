@@ -5,10 +5,8 @@ export default function Player({initialName,symbol,isActive}){
     const [isEditing,setIsEditing] = useState(false);
     function handleEditClick(){
         setIsEditing((editing)=>!editing)
-        console.log(isEditing)
     }
     function handeChange(event){
-        console.log(event)
         setPlayerName(event.target.value);
 
     }
@@ -17,7 +15,6 @@ export default function Player({initialName,symbol,isActive}){
         editalePlayerName = <input type="text" required value={playerName} onChange={handeChange}/>
 
     }
-    console.log(isEditing)
     return(
         <li className={isActive ?'active': undefined}>
         <span className="player-name">{editalePlayerName}</span>
