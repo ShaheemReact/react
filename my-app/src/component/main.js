@@ -9,6 +9,8 @@ let userName = {
         console.log(this.age)
     }
 }
+
+
  class Name{
     constructor(name,age){
         this.name = name
