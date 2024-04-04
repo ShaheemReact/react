@@ -1,15 +1,32 @@
 import Header from "./components/Header";
 import UserInput from "./components/UserInput";
 import Result from "./components/Result";
-import { calculateInvestmentResults } from "./util/investment";
+import { useState } from "react"
 
 
 function App() {
+  const [intialVal,setIntialVal] = useState({
+    initialInvestment:1000,
+    annualInvestment:4000,
+    expectedReturn:6,
+    duration:10
+});
+ const inputIsValid = intialVal.duration >=1;
 
-  return (<>
+function handleChange(inputItentifier,newValue){
+    setIntialVal(prevvalue=>{
+        return{
+            ...prevvalue,
+            [inputItentifier]:+newValue
+        };
+    })
+}
+
+  return (
+  <>
     <Header/>
-    <UserInput/>
-    <Result/>
+    <UserInput intialVal={intialVal} onChangeInput={handleChange}/>
+    {inputIsValid ?<Result userInput={intialVal}/>:<p className="center">Enter   Duration Greater than 0</p>}
     </>
     
   )
