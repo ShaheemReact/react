@@ -5,7 +5,7 @@ export default function HomePage(){
     <>
     <h1>My HOme</h1>
     <p>Go To
-        <Link to="/product">Products</Link>
+        <Link to="product">Products</Link>
     </p>
     </>)
 }
