@@ -59,7 +59,7 @@ const router = createBrowserRouter([
               },
               {
                 path: 'edit',
-                element: <EditPage />,
+                element: <EditPage />,  
                 action: manipulateEventAction,
               },
             ],

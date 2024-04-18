@@ -1,5 +1,5 @@
 import AuthForm from '../components/AuthForm';
-import {json} from 'react-router-dom'
+import {json,redirect} from 'react-router-dom'
 function AuthenticationPage() {
   return <AuthForm />;
 }
@@ -29,5 +29,24 @@ if(mode !== 'login' && mode!=='signup'){
     body: JSON.stringify(authData)
   });
   
+
+  if(response.status===422||response.status===401){
+ 
+    return response;
+  }
+
+  if(!response.ok){
+    throw json({message:'could not authenticate'},{status:500});
+  }
+
+  const resData = await response.json();
+  const token  = resData.token;
+  localStorage.setItem('token',token); 
+  console.log(localStorage)
+  const expiration =  new Date();
+  expiration.setHours(expiration.getHours()+1);
+  localStorage.setItem('expiration',expiration.toISOString());
+
+  return redirect('/');
 }
 
