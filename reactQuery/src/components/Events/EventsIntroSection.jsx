@@ -10,7 +10,7 @@ export default function EventsIntroSection() {
       style={{ backgroundImage: `url(${meetupImg})` }}
     >
       <h2>
-        Connect with amazing people <br />
+        Connect with amazing people <br/>
         or <strong>find a new passion</strong>
       </h2>
       <p>Anyone can organize and join events on React Event!</p>
